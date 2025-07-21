@@ -3,12 +3,51 @@ let  bookTitle = document.querySelector('.title')
 let  authorName = document.querySelector('.author')
 let pages =document.querySelector('.pages')
 let  submit = document.querySelector('.submit');
-let  readStatus = document.querySelector('.status')
+let  readStatus = document.querySelector('.status');
+const bookDisplayArea = document.querySelector('#book-display-area');
 
 
 
 
 const myLibrary = [];
+
+
+function displayBooks(){
+    bookDisplayArea.innerHTML = '';
+    myLibrary.forEach(book => {
+        // creating the storage card for books
+        const bookCard = document.createElement('div');
+        bookCard.classList.add('book-card');
+        // getting book title
+        const displayTitle = document.createElement('h3');
+        displayTitle.textContent = book.title;
+        // getting author name
+        const authorDisplay = document.createElement('p');
+        authorDisplay.textContent = `By: ${book.author}`;
+
+        // REad status
+        const displayRead = document.createElement('p');
+        displayRead.textContent = `Status:${book.status}`;
+
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.classList.add('remove-btn'); 
+
+        // getting read status
+        // const statusRead = document.createElement('p')
+        // statusRead.textContent = `status: ${book.status}`;
+
+
+        bookCard.appendChild(displayTitle);
+        bookCard.appendChild(authorDisplay);
+        bookCard.appendChild(displayRead);
+        bookCard.appendChild(removeButton);
+        removeButton.dataset.bookId = book.id;
+
+        bookDisplayArea.appendChild(bookCard)
+
+    })
+}
 
 function Book(title, author, status) {
   // the constructor...
@@ -29,12 +68,8 @@ submit.addEventListener('click',(event) => {
     const author = authorName.value;
     const readValue = readStatus.value;
     addBookToLibrary(title, author, readValue);
-    console.log("A book was added to the library!");
-    console.log(myLibrary);
-    bookTitle.value = '';
-    authorName.value = '';
-    readStatus.value = '';
-    pages.value = '';
+    
+    displayBooks();
   
 
 } )
