@@ -1,0 +1,43 @@
+/* .container{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    border: 1px solid salmon;
+} */
+ body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #E9E3DF;
+ }
+ .container{
+    /* border: 1px solid saddlebrown; */
+    text-align: center;
+    height: 200px;
+    box-shadow: 0 10px 10px white;
+    /* background-color: #FEFFC4; */
+ }
+
+label{
+    display: block;
+}
+input{
+    border-radius: 5px;
+    border: none;
+}
+input:focus{
+    outline: none;
+    border-color: #1992d4;
+}
+.submit{
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    background-color: blue;
+    margin-top: 10px;
+    padding: 5px;
+    color: white;
+}
